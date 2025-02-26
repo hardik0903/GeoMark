@@ -6,7 +6,7 @@ This repository contains the UI for the GeoMark website, a renewable energy reco
 
 Below is a demonstration video of the website UI in action. The background video file used is `view.mp4` (located in the `video/` folder):
 
-![Website view](./view.mp4)
+![Website view](./video.mp4)
 
 ## Tasks / Roadmap
 
