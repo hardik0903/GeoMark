@@ -1,0 +1,608 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    color: #fff;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    background-color: #000;
+    /* Keeps the dark background overall */
+  }
+
+  /* Live Background */
+  #animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #1a2e1a, #000000);
+    overflow: hidden;
+  }
+
+  /* Video background style */
+  #bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  .floating-particle {
+    position: absolute;
+    background: rgba(76, 175, 80, 0.4);
+    border-radius: 50%;
+    filter: blur(3px);
+    pointer-events: none;
+    opacity: 0;
+    animation: float 15s infinite linear;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(100%) translateX(0);
+      opacity: 0;
+    }
+
+    10% {
+      opacity: 0.8;
+    }
+
+    90% {
+      opacity: 0.6;
+    }
+
+    100% {
+      transform: translateY(-100%) translateX(20px);
+      opacity: 0;
+    }
+  }
+
+  .energy-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(76, 175, 80, 0.2) 0%, rgba(76, 175, 80, 0) 70%);
+    opacity: 0.1;
+    transform-origin: center bottom;
+    animation: wave 20s infinite linear;
+  }
+
+  @keyframes wave {
+    0% {
+      transform: translateX(0) scale(0.5);
+    }
+
+    100% {
+      transform: translateX(-50%) scale(0.5);
+    }
+  }
+
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(76, 175, 80, 0.3);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+  }
+
+  /* Logo updated with a green gradient style */
+  /* Example: apply gradient text to the logo, hero title, and section titles */
+  .logo {
+    /* Adjust the font size or weight as needed */
+    font-size: 2.5rem;
+    font-family: 'Poppins', sans-serif;
+
+    font-weight: 700;
+
+    /* Use a vertical gradient: green at the top (#4CAF50) and black (#000) at the bottom */
+    background: linear-gradient(to bottom, #ffffff, #00ff0887);
+
+    /* For older WebKit (Chrome/Safari) */
+    -webkit-background-clip: text;
+    /* -webkit-text-fill-color: transparent; */
+
+    /* Modern browsers */
+    background-clip: text;
+    color: transparent;
+    /* ensures gradient shows through */
+
+    /* Optional text shadow if you want a subtle glow or emphasis */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+
+  
+
+  .hero h1,h2{
+    /* Adjust the font size or weight as needed */
+    font-size: 2.5rem;
+    font-family: 'Poppins', sans-serif;
+
+    font-weight: 700;
+
+    /* Use a vertical gradient: green at the top (#4CAF50) and black (#000) at the bottom */
+    background: linear-gradient(to bottom, #ffffff, #0435069c);
+
+    /* For older WebKit (Chrome/Safari) */
+    -webkit-background-clip: text;
+    /* -webkit-text-fill-color: transparent; */
+
+    /* Modern browsers */
+    background-clip: text;
+    color: transparent;
+    /* ensures gradient shows through */
+
+    /* Optional text shadow if you want a subtle glow or emphasis */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: #4CAF50;
+  }
+
+  .get-started-btn {
+    background: #4CAF50;
+    color: #000;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+  }
+
+  .get-started-btn:hover {
+    background: #3e8e41;
+    transform: translateY(-2px);
+  }
+
+  main {
+    padding-top: 80px;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 5%;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, #4CAF50, #8BC34A);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .how-it-works {
+    padding: 5rem 5%;
+    background: rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #4CAF50;
+    text-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  }
+
+  .steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .step-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #4CAF50;
+    border-radius: 10px;
+    padding: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(5px);
+  }
+
+  .step-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
+  }
+
+  .step-number {
+    display: inline-block;
+    background: #4CAF50;
+    color: #000;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .step-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .step-card p {
+    line-height: 1.6;
+  }
+
+  .energy-sources {
+    padding: 5rem 5%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .energy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .energy-card {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(5px);
+    max-width: 320px; 
+    /* height: 120px; */
+    text-align: center; 
+    margin: 0 auto; 
+    margin-top: 0;      
+    padding-top: 0;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .energy-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
+  }
+
+  .energy-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .energy-content1,.energy-content2,.energy-content3 {
+    padding: 0.1rem; /* Reduce padding to prevent large gaps */
+    position: relative;
+    overflow: hidden;
+    padding-top: 0;
+
+  }
+
+  .energy-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+  }
+
+  .energy-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .calculator {
+    padding: 5rem 5%;
+    background: rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+  }
+
+  .calculator-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #4CAF50;
+    border-radius: 10px;
+    padding: 2rem;
+    backdrop-filter: blur(5px);
+  }
+
+  .input-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .input-group input,
+  .input-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #4CAF50;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border-radius: 5px;
+  }
+
+  .calculate-btn {
+    background: #4CAF50;
+    color: #000;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block;
+    margin: 1rem auto;
+    transition: background 0.3s, transform 0.3s;
+  }
+
+  .calculate-btn:hover {
+    background: #3e8e41;
+    transform: translateY(-2px);
+  }
+
+  .results {
+    margin-top: 2rem;
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid #4CAF50;
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: none;
+  }
+
+  .testimonials {
+    padding: 5rem 5%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .testimonial-card {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 2rem;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(5px);
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+  }
+
+  .testimonial-text {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+  }
+
+  .author-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin-right: 1rem;
+  }
+
+  .author-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .author-info p {
+    color: #4CAF50;
+  }
+
+  .faq {
+    padding: 5rem 5%;
+    background: rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+  }
+
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+  }
+
+  .faq-question {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s, padding 0.3s;
+    line-height: 1.6;
+  }
+
+  .faq-item.active .faq-answer {
+    padding: 1.5rem;
+    max-height: 500px;
+  }
+
+  footer {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 3rem 5%;
+    border-top: 1px solid rgba(76, 175, 80, 0.3);
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-content {
+    display: grid;
+    font-family: 'Poppins', sans-serif;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+  }
+
+  .footer-column h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-size: 2.5rem;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #ffffff, #00ff0887);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  .footer-column ul {
+    list-style: none;
+  }
+
+  .footer-column ul li {
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-column ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-column ul li a:hover {
+    color: #4CAF50;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    background: #4CAF50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+  }
+
+  .social-icon:hover {
+    transform: translateY(-5px);
+  }
+
+  .copyright {
+    text-align: center;
+    margin-top: 3rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+  }
