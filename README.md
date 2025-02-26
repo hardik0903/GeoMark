@@ -8,6 +8,10 @@ Below is a demonstration video of the website UI in action. The background video
 
 ![Website view](./video.mp4)
 
+and This is Website preview
+
+![Website view](./UI.png)
+
 ## Tasks / Roadmap
 
 ### 1. Backend and Machine Learning Integration
