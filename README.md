@@ -2,6 +2,10 @@
 
 This repository contains the UI for the GeoMark website, a renewable energy recommendation system. The current implementation displays a user interface with energy source cards, a background video, and various UI elements.
 
+## Live Website
+
+Check out the live website at [https://geomark.netlify.app/](https://geomark.netlify.app/).
+
 ## Demonstration Video
 
 Below is a demonstration video of the website UI in action. The background video file used is `view.mp4` (located in the `video/` folder):
